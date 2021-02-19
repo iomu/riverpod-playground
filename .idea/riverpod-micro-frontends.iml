@@ -4,8 +4,6 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/shared/build" />
-      <excludeFolder url="file://$MODULE_DIR$/shared/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/notifications/build" />
       <excludeFolder url="file://$MODULE_DIR$/notifications/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/notifications/.pub" />
@@ -15,6 +13,9 @@
       <excludeFolder url="file://$MODULE_DIR$/contacts/build" />
       <excludeFolder url="file://$MODULE_DIR$/contacts/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/contacts/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/shared/build" />
+      <excludeFolder url="file://$MODULE_DIR$/shared/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/shared/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
