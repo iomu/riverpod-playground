@@ -61,37 +61,39 @@ class _NotificationBadgeState extends State<_NotificationBadge> {
   @override
   Widget build(BuildContext context) {
     const double bubbleSize = 15;
-    // TODO: how to read from shared model here
-    final unread =
-        0; // context.select<NotificationModel, int>((value) => value.unreadCount);
     return IconButton(
-      icon: Stack(
-        children: <Widget>[
-          Icon(unread > 0 ? Icons.notifications : Icons.notifications_none),
-          if (unread > 0)
-            Positioned(
-              right: 0,
-              top: 0,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 2),
-                constraints: const BoxConstraints(
-                    maxHeight: bubbleSize,
-                    minWidth: bubbleSize,
-                    minHeight: bubbleSize),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(bubbleSize / 2),
-                ),
-                child: Center(
-                  child: Text(
-                    '$unread',
-                    softWrap: false,
-                    style: TextStyle(fontSize: 10),
+      icon: Consumer(
+        builder: (context, watch, _) {
+          final unread = watch(notificationProvider).unreadCount;
+          return Stack(
+            children: <Widget>[
+              Icon(unread > 0 ? Icons.notifications : Icons.notifications_none),
+              if (unread > 0)
+                Positioned(
+                  right: 0,
+                  top: 0,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                    constraints: const BoxConstraints(
+                        maxHeight: bubbleSize,
+                        minWidth: bubbleSize,
+                        minHeight: bubbleSize),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(bubbleSize / 2),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '$unread',
+                        softWrap: false,
+                        style: TextStyle(fontSize: 10),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            )
-        ],
+                )
+            ],
+          );
+        },
       ),
       onPressed: () => Navigator.pushNamed(context, Routes.notifications),
     );
@@ -100,8 +102,7 @@ class _NotificationBadgeState extends State<_NotificationBadge> {
   @override
   void initState() {
     super.initState();
-    // TODO: how to read from shared model here
-    // Future.microtask(
-    //     () => context.read<NotificationModel>().loadNotifications());
+    Future.microtask(
+        () => context.read(notificationProvider).loadNotifications());
   }
 }
