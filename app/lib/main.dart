@@ -48,6 +48,9 @@ class RiverpodApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
+      overrides: [
+        ...notificationOverrides,
+      ],
       child: MaterialApp(
         title: 'Provider Demo',
         routes: {

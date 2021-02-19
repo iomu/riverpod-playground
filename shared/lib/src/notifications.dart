@@ -12,5 +12,5 @@ class NotificationModel {
 }
 
 // TODO compute this based on the internal notification model
-final notificationProvider = ScopedProvider(
+final notificationProvider = ScopedProvider<NotificationModel>(
     (_) => NotificationModel(unreadCount: 0, loadNotifications: () async {}));

@@ -15,7 +15,7 @@ class _RiverpodNotificationScreenState
   void initState() {
     super.initState();
     Future.microtask(
-        () => context.read(notificationsProvider).loadNotifications());
+        () => context.read(internalNotificationsProvider).loadNotifications());
   }
 
   @override
@@ -30,7 +30,7 @@ class _RiverpodNotificationScreenState
       body: Consumer(
         builder: (context, watch, _) => Builder(
           builder: (context) {
-            final notificationModel = watch(notificationsProvider);
+            final notificationModel = watch(internalNotificationsProvider);
             final notifications = notificationModel.notifications;
             if (notifications.hasError) {
               return Center(child: Text(notifications.error.toString()));
